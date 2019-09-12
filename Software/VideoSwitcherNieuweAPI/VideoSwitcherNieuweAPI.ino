@@ -2,8 +2,8 @@
 /*
 
  */
-//#define UseATEM
-#define _DEBUG
+#define UseATEM
+//#define _DEBUG
 //#define USE_WATCHDOG
 
 #include <Ethernet.h>
@@ -43,7 +43,6 @@ class AntiJitterKeyboard
   
     byte Read()
     {
-      return 0;
       // Read all columns for the row.
       pinMode(m_pin, OUTPUT);
       digitalWrite(m_pin, LOW);
@@ -113,7 +112,7 @@ const int     ledindexaux = 0;
 AntiJitterKeyboard commandkb(31);
 const int     ledindexcommand = 3;
 
-const int sliderport = A7;
+const int sliderport = A6;
 int       lastslidervalue = 0;
 bool      reverseslider = analogRead(sliderport) < 500;
 
@@ -144,7 +143,7 @@ void setup()
   // Keyboard pins
   for ( byte pin = 22; pin <= 31; pin++)
   {
-//    pinMode(pin,  INPUT_PULLUP);
+    pinMode(pin,  INPUT_PULLUP);
   }
 
   // Cycle all leds to test them.
